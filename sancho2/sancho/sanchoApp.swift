@@ -13,7 +13,7 @@ struct sanchoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AskInputView(sameItems: Tarefa(task: "", items: [["" : ""]])).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            AskInputView()
         }
     }
 }

@@ -11,6 +11,7 @@
 		A955D5822A4A082300E692E7 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A955D5812A4A082300E692E7 /* ItemModel.swift */; };
 		A955D5852A4B6A6900E692E7 /* AskInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A955D5842A4B6A6900E692E7 /* AskInputView.swift */; };
 		A955D5872A4B70E300E692E7 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A955D5862A4B70E300E692E7 /* InventoryView.swift */; };
+		A955D58B2A4CC9B700E692E7 /* ResultsFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A955D58A2A4CC9B700E692E7 /* ResultsFocusView.swift */; };
 		F77B041B2A44BBBA0091F907 /* sanchoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77B041A2A44BBBA0091F907 /* sanchoApp.swift */; };
 		F77B041D2A44BBBA0091F907 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77B041C2A44BBBA0091F907 /* ContentView.swift */; };
 		F77B041F2A44BBBB0091F907 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F77B041E2A44BBBB0091F907 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		A955D5812A4A082300E692E7 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		A955D5842A4B6A6900E692E7 /* AskInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskInputView.swift; sourceTree = "<group>"; };
 		A955D5862A4B70E300E692E7 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
+		A955D58A2A4CC9B700E692E7 /* ResultsFocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsFocusView.swift; sourceTree = "<group>"; };
 		F77B04172A44BBBA0091F907 /* sancho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sancho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77B041A2A44BBBA0091F907 /* sanchoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sanchoApp.swift; sourceTree = "<group>"; };
 		F77B041C2A44BBBA0091F907 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				A955D5862A4B70E300E692E7 /* InventoryView.swift */,
 				F7E536822A4614FC00A8C353 /* HomeView.swift */,
 				A955D5842A4B6A6900E692E7 /* AskInputView.swift */,
+				A955D58A2A4CC9B700E692E7 /* ResultsFocusView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				F77B04272A44BBBB0091F907 /* sancho.xcdatamodeld in Sources */,
 				F7E536922A46176300A8C353 /* Color+Ext.swift in Sources */,
 				F7E536972A4618B700A8C353 /* ChatGPTService.swift in Sources */,
+				A955D58B2A4CC9B700E692E7 /* ResultsFocusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,11 +14,11 @@ class ChatGPTService: ObservableObject {
     private var prompt: String = """
         Com base na tarefa explicada abaixo, categorize e gere itens que devem ser utilizados na determinada tarefa.
 
-        Formate no padrão json.
-        Retorne apenas o json como string.
+        Retorne apenas os objetos necessários separados por vírgula.
+        Uma única string na mesma linha.
 
-        Tarefa: Como limpar a minha casa?
-        Resultado: {"task": "Limpar a casa","items": [{"name":"vassoura"}]}
+        Exemplo de resultado esperado caso a tarefa fosse "Quero lavar roupa":
+        Amaciante, Máquina de Lavar, Sabão em Pó, Água, Prendedores, Varal
     """
     
     init() {
@@ -41,7 +41,6 @@ class ChatGPTService: ObservableObject {
             )
             
             if let response = chat.choices.first?.message.content {
-
                 return response
             }
         } catch {
