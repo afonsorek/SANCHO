@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		548ED3652A4CB2C100E59050 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548ED3642A4CB2C100E59050 /* CardView.swift */; };
+		548ED3672A4CC89300E59050 /* ResultsFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548ED3662A4CC89300E59050 /* ResultsFocusView.swift */; };
 		A955D5802A44CD1F00E692E7 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = A955D57F2A44CD1F00E692E7 /* OpenAIKit */; };
 		A955D5822A4A082300E692E7 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A955D5812A4A082300E692E7 /* ItemModel.swift */; };
 		A955D5852A4B6A6900E692E7 /* AskInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A955D5842A4B6A6900E692E7 /* AskInputView.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		548ED3642A4CB2C100E59050 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		548ED3662A4CC89300E59050 /* ResultsFocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsFocusView.swift; sourceTree = "<group>"; };
 		A955D5812A4A082300E692E7 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		A955D5842A4B6A6900E692E7 /* AskInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskInputView.swift; sourceTree = "<group>"; };
 		A955D5862A4B70E300E692E7 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 				A955D5862A4B70E300E692E7 /* InventoryView.swift */,
 				F7E536822A4614FC00A8C353 /* HomeView.swift */,
 				A955D5842A4B6A6900E692E7 /* AskInputView.swift */,
+				548ED3642A4CB2C100E59050 /* CardView.swift */,
+				548ED3662A4CC89300E59050 /* ResultsFocusView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -248,8 +254,10 @@
 				F7E536902A46174E00A8C353 /* View+Ext.swift in Sources */,
 				F77B041D2A44BBBA0091F907 /* ContentView.swift in Sources */,
 				F7E536862A4615D800A8C353 /* HomeViewModel.swift in Sources */,
+				548ED3652A4CB2C100E59050 /* CardView.swift in Sources */,
 				F77B041B2A44BBBA0091F907 /* sanchoApp.swift in Sources */,
 				F7E536832A4614FC00A8C353 /* HomeView.swift in Sources */,
+				548ED3672A4CC89300E59050 /* ResultsFocusView.swift in Sources */,
 				F77B04272A44BBBB0091F907 /* sancho.xcdatamodeld in Sources */,
 				F7E536922A46176300A8C353 /* Color+Ext.swift in Sources */,
 				F7E536972A4618B700A8C353 /* ChatGPTService.swift in Sources */,
