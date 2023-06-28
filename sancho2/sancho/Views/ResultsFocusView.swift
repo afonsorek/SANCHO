@@ -9,14 +9,48 @@ import Foundation
 import SwiftUI
 
 struct ResultsFocusView: View {
+    var steps: [String]
     
     var body: some View {
         
         // ZStack: lvl 1 -> título + navbar + main button // lvl 2 -> HStack cards
         
         ZStack{
-            
-            // HStack cards dos resultados (adicionar lógica do spacer fixo atrás da navbar)
+            HStack{
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(steps, id: \.self){ item in
+                            HStack {
+                                ZStack (alignment: .center){
+                                    Rectangle()
+                                        .foregroundColor(Color(uiColor: .systemGray3))
+                                        .frame(width: 207, height: 526)
+                                        .cornerRadius(16)
+                                        .padding(.leading, 8)
+                                        .padding(.trailing, 8)
+                                    
+                                    VStack(alignment: .center) {
+                                        Text(item)
+                                            .font(.largeTitle)
+                                            .foregroundColor(Color(uiColor: .black))
+                                            .multilineTextAlignment(.center)
+                                        
+                                        Text("Descrição do item x")
+                                            .multilineTextAlignment(.center)
+                                            .font(.headline)
+                                        
+                                    }
+                                    .padding(.bottom, 33)
+                                    
+                                }
+                                    .padding(.horizontal, 16)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .background(.clear)
+                                }.ignoresSafeArea()
+                            }
+                    }
+                }
+            }
             HStack(alignment: .center){
                 
                 
@@ -230,7 +264,7 @@ struct ResultsFocusView: View {
 
 struct ResultsFocusView_Preview: PreviewProvider {
     static var previews: some View {
-        ResultsFocusView()
+        ResultsFocusView(steps: [""])
     }
 }
 
