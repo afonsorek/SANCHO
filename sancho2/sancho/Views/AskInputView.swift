@@ -110,6 +110,7 @@ struct AskInputView: View {
                         
                         objetos.replace("[\"", with: " ")
                         objetos.replace("\"]", with: "   ")
+                        objetos.replace("  ", with: " ")
                         print(objetos)
                         
                         titleInv = item.title ?? ""
