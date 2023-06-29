@@ -51,7 +51,7 @@ struct AskInputView: View {
                         .textFieldStyle(.roundedBorder)
 
                     NavigationLink {
-                        InventoryView(title: prompt, steps: arrayInv, descs: arrayDesc)
+                        ResultsFocusView(title: prompt, steps: arrayInv, descs: arrayDesc)
                     } label: {
                         Image(systemName: label)
                             .font(.title)
@@ -77,12 +77,14 @@ struct AskInputView: View {
             }
             .ignoresSafeArea()
         }
+        .navigationBarBackButtonHidden()
     }
     
     private func addItem() {
         objetos = ""
         itemList = []
         Task {
+            var textFinal = [""]
             let result = await ChatGPTService().getInventory(prompt)
             
             let itemDesc = result!.components(separatedBy: "\n")
@@ -92,13 +94,17 @@ struct AskInputView: View {
             
             if itemDesc.count == 1{
                 arrayDesc = [""]
-            }
-            
-            if itemDesc[1] == ""{
-                arrayDesc = itemDesc[2].components(separatedBy: ", ")
-            }
-            else{
+                print("Descrição veio vazia")
+            } else if itemDesc.count == 2{
                 arrayDesc = itemDesc[1].components(separatedBy: ", ")
+                print("Descrição veio certa teoricamente")
+            }else {
+                for i in 1 ..< itemDesc.count{
+                    textFinal[0] += "\(itemDesc[i]), "
+                    arrayDesc = textFinal[0].components(separatedBy: ", ")
+                    
+                    print("Descrição tentou concatenar com textFinal: \(textFinal)")
+                }
             }
             
             print("Items: \(arrayInv)")
