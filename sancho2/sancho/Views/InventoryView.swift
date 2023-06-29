@@ -10,6 +10,9 @@ import SwiftUI
 struct InventoryView: View {
     var title: String
     var steps: [String]
+    var descs: [String]
+    @State var count = 0
+    
     var body: some View {
         NavigationStack{
             
@@ -65,24 +68,153 @@ struct InventoryView: View {
                     }
                     .padding(.horizontal, 45)
                     ScrollView {
-                        VStack {
-                            ForEach(steps, id: \.self){ item in
-                                HStack {
-                                    VStack(alignment: .leading) {
-                                        Text(item)
-                                            .font(.body)
-                                            .foregroundColor(Color(uiColor: .black))
-                                        Text("Descrição do item x")
-                                            .font(.caption)
-                                            .opacity(0.6)
-                                        Divider()
+                        ZStack{
+                            VStack {
+                                //                            ForEach(steps, id: \.self){ item in
+                                ForEach(0..<steps.count, id: \.self) { i in
+                                    HStack {
+                                        VStack(alignment: .leading) {
+                                            Text(steps[i])
+                                                .font(.body)
+                                                .foregroundColor(Color(uiColor: .black))
+                                            if i < descs.count{
+                                                Text(descs[i])
+                                                    .font(.caption)
+                                                    .opacity(0.6)
+                                            }else{
+                                                Text("--")
+                                                    .font(.caption)
+                                                    .opacity(0.6)
+                                            }
+                                            
+                                            if i == descs.count-1{
+                                                //
+                                            }else{
+                                                //Divider()
+                                            }
+                                        }
+                                        .padding(.bottom, 33)
+                                        Spacer()
+                                            if i == 0{
+                                                VStack(spacing: 0) {
+                                                    ZStack {
+                                                        Circle()
+                                                            .frame(width: 24, height: 24)
+                                                            .foregroundColor(Color(uiColor: .systemGray3))
+                                                        Circle()
+                                                            .frame(width: 12, height: 12)
+                                                            .foregroundColor(Color(uiColor: .systemGray))
+                                                            .frame(width: 24, height: 24)
+                                                    }
+                                                    Line()
+                                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
+                                                        .frame(width: 2, height: 40)
+                                                        .foregroundColor(Color(uiColor: .systemGray3))
+                                                }
+                                            }else if i == steps.count-1{
+                                                VStack(spacing: 0) {
+                                                    Line()
+                                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
+                                                        .frame(width: 2, height: 47)
+                                                        .foregroundColor(Color(uiColor: .systemGray3))
+                                                    Circle()
+                                                        .frame(width: 12, height: 12)
+                                                        .foregroundColor(.clear)
+                                                        .overlay(content: {
+                                                            Circle()
+                                                                .stroke(Color(uiColor: .systemGray3), lineWidth: 2)
+                                                    })
+                                                        .frame(width: 24, height: 24)
+                                                }
+                                            }else{
+                                                VStack(spacing: 0) {
+                                                    Line()
+                                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
+                                                        .frame(width: 2, height: 20)
+                                                        .foregroundColor(Color(uiColor: .systemGray3))
+                                                    Circle()
+                                                        .frame(width: 12, height: 12)
+                                                        .foregroundColor(.clear)
+                                                        .overlay(content: {
+                                                            Circle()
+                                                                .stroke(Color(uiColor: .systemGray3), lineWidth: 2)
+                                                    })
+                                                        .frame(width: 24, height: 24)
+                                                    Line()
+                                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
+                                                        .frame(width: 2, height: 20)
+                                                        .foregroundColor(Color(uiColor: .systemGray3))
+                                                }
+                                            }
                                     }
-                                    .padding(.bottom, 33)
+                                    .padding(.horizontal, 45)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .background(.clear)
                                 }
-                                .padding(.horizontal, 45)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(.clear)
                             }
+//                            HStack{
+//                                Spacer()
+//                                VStack {
+//                                    VStack(spacing: 4) {
+//                                        // botão de alterar view entre foco e overview
+//                                        Button(action: {
+//                                            //
+//                                        }) {
+//                                            Image(systemName: "list.bullet.rectangle.portrait.fill")
+//                                                .font(.headline)
+//                                                .foregroundColor(Color(uiColor: .systemGray2))
+//                                        }
+//                                        // 1 primeiro
+//                                        // true
+//                                        ForEach(0..<steps.count, id: \.self) { i in
+//                                            if i == 0{
+//                                                VStack(spacing: 0) {
+//                                                    ZStack {
+//                                                        Circle()
+//                                                            .frame(width: 24, height: 24)
+//                                                            .foregroundColor(Color(uiColor: .systemGray3))
+//                                                        Circle()
+//                                                            .frame(width: 12, height: 12)
+//                                                            .foregroundColor(Color(uiColor: .systemGray))
+//                                                    }
+//                                                    Line()
+//                                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
+//                                                        .frame(width: 2, height: 40)
+//                                                        .foregroundColor(Color(uiColor: .systemGray3))
+//                                                }
+//                                            }else if i == steps.count-1{
+//                                                VStack(spacing: 0) {
+//                                                    Line()
+//                                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
+//                                                        .frame(width: 2, height: 47)
+//                                                        .foregroundColor(Color(uiColor: .systemGray3))
+//                                                    Circle()
+//                                                        .frame(width: 12, height: 12)
+//                                                        .foregroundColor(.clear)
+//                                                        .overlay(content: {
+//                                                            Circle()
+//                                                                .stroke(Color(uiColor: .systemGray3), lineWidth: 2)
+//                                                    })
+//                                                }
+//                                            }else{
+//                                                VStack(spacing: 0) {
+//                                                    Circle()
+//                                                        .frame(width: 12, height: 12)
+//                                                        .foregroundColor(.clear)
+//                                                        .overlay(content: {
+//                                                            Circle()
+//                                                                .stroke(Color(uiColor: .systemGray3), lineWidth: 2)
+//                                                    })
+//                                                    Line()
+//                                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
+//                                                        .frame(width: 2, height: 40)
+//                                                        .foregroundColor(Color(uiColor: .systemGray3))
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                            }.padding(.horizontal, 48)
                         }
                     }
                 }
@@ -95,6 +227,6 @@ struct InventoryView: View {
 
 struct InventoryView_Previews: PreviewProvider {
     static var previews: some View {
-        InventoryView(title: "Guardar as roupas", steps: [""])
+        InventoryView(title: "Guardar as roupas", steps: [""], descs: [""])
     }
 }

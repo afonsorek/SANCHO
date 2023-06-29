@@ -13,7 +13,6 @@
 		A955D5822A4A082300E692E7 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A955D5812A4A082300E692E7 /* ItemModel.swift */; };
 		A955D5852A4B6A6900E692E7 /* AskInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A955D5842A4B6A6900E692E7 /* AskInputView.swift */; };
 		A955D5872A4B70E300E692E7 /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A955D5862A4B70E300E692E7 /* InventoryView.swift */; };
-		A955D58B2A4CC9B700E692E7 /* ResultsFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A955D58A2A4CC9B700E692E7 /* ResultsFocusView.swift */; };
 		F77B041B2A44BBBA0091F907 /* sanchoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77B041A2A44BBBA0091F907 /* sanchoApp.swift */; };
 		F77B041D2A44BBBA0091F907 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77B041C2A44BBBA0091F907 /* ContentView.swift */; };
 		F77B041F2A44BBBB0091F907 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F77B041E2A44BBBB0091F907 /* Assets.xcassets */; };
@@ -61,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A90512472A4CD0530018B7E4 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A955D58A2A4CC9B700E692E7 /* ResultsFocusView.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		A955D5832A4A082F00E692E7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +81,7 @@
 			children = (
 				F77B04192A44BBBA0091F907 /* sancho */,
 				F77B04182A44BBBA0091F907 /* Products */,
+				A90512472A4CD0530018B7E4 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -263,7 +271,6 @@
 				F77B04272A44BBBB0091F907 /* sancho.xcdatamodeld in Sources */,
 				F7E536922A46176300A8C353 /* Color+Ext.swift in Sources */,
 				F7E536972A4618B700A8C353 /* ChatGPTService.swift in Sources */,
-				A955D58B2A4CC9B700E692E7 /* ResultsFocusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +403,7 @@
 				DEVELOPMENT_TEAM = R9V648Y475;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = sancho/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -427,6 +435,7 @@
 				DEVELOPMENT_TEAM = R9V648Y475;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = sancho/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

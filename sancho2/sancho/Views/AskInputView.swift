@@ -6,10 +6,13 @@ struct AskInputView: View {
     @State var icone = "character.bubble.fill"
     @State var titulo = "Qual sua tarefa?"
     
-    @State var activeNav = true
+    @State var enable = false
+    
+    @State var label = "square.and.pencil.circle"
     
     @State var titleInv = ""
     @State var arrayInv: [String] = [""]
+    @State var arrayDesc: [String] = [""]
 
     @State private var showingAlert = false
     @State private var prompt = ""
@@ -46,27 +49,33 @@ struct AskInputView: View {
                         .foregroundColor(Color(uiColor: .darkGray))
                         .padding(.horizontal,40)
                         .textFieldStyle(.roundedBorder)
-                    
-                    Button("Enviar"){
+
+                    NavigationLink {
+                        InventoryView(title: prompt, steps: arrayInv, descs: arrayDesc)
+                    } label: {
+                        Image(systemName: label)
+                            .font(.title)
+                    }
+                    .disabled(enable)
+                    .onAppear{
+                        label = "square.and.pencil.circle"
+                        icone = "character.bubble.fill"
+                        titulo = "Qual sua tarefa?"
+                        prompt = ""
+                        enable = true
+                    }
+                    .onTapGesture {
                         icone = "rectangle.3.group.bubble.left.fill"
                         titulo = "Gerando guia..."
-                        addItem()
+                        label = "rectangle.and.pencil.and.ellipsis"
+                        self.addItem()
+                        self.enable = true
+
                     }
-                    NavigationLink {
-                        InventoryView(title: prompt, steps: arrayInv)
-                    } label: {
-                        Text("Ver tarefa")
-                    }
-                    .disabled(activeNav)
+                    .padding(.top, 16)
                 }
-                
             }
             .ignoresSafeArea()
-        }
-        .onAppear{
-            icone = "character.bubble.fill"
-            titulo = "Qual sua tarefa?"
-            activeNav = true
         }
     }
     
@@ -75,11 +84,29 @@ struct AskInputView: View {
         itemList = []
         Task {
             let result = await ChatGPTService().getInventory(prompt)
-                                
-            arrayInv = result!.components(separatedBy: ", ")
-            print(arrayInv)
             
-            activeNav = false
+            let itemDesc = result!.components(separatedBy: "\n")
+            print(itemDesc)
+            
+            arrayInv = itemDesc[0].components(separatedBy: ", ")
+            
+            if itemDesc.count == 1{
+                arrayDesc = [""]
+            }
+            
+            if itemDesc[1] == ""{
+                arrayDesc = itemDesc[2].components(separatedBy: ", ")
+            }
+            else{
+                arrayDesc = itemDesc[1].components(separatedBy: ", ")
+            }
+            
+            print("Items: \(arrayInv)")
+            print("Descrições: \(arrayDesc)")
+            
+            enable = false
+            label = "checkmark.circle"
+            titulo = "Guia gerado!"
         }
     }
 }

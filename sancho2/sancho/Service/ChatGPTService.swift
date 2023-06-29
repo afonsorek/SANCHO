@@ -16,9 +16,12 @@ class ChatGPTService: ObservableObject {
 
         Retorne apenas os objetos necessários separados por vírgula.
         Uma única string na mesma linha.
+    
+        Na linha abaixo, retorne uma breve descrição com o menor número possível de palavras sobre a função do item correspondente no processo.
 
         Exemplo de resultado esperado caso a tarefa fosse "Quero lavar roupa":
         Amaciante, Máquina de Lavar, Sabão em Pó, Água, Prendedores, Varal
+        Para aromatizar a roupa, Para realizar o processo pesado, Para limpeza das roupas, Para lavar a roupa, Para prendrer a roupa no varal, Para estender a roupa
     """
     
     init() {
