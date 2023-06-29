@@ -33,27 +33,30 @@ struct InventoryView: View {
                 .ignoresSafeArea()
                 VStack {
                     HStack(alignment: .center, spacing: 16){
-                        //ICONE
-                        Image(systemName: "character.bubble.fill")
-                            .font(.body)
-                            .foregroundColor(Color(uiColor: .darkGray))
-                            .frame(width: 36, height: 36, alignment: .center)
-                            .background(Color(uiColor: .systemGray3))
-                            .cornerRadius(36)
-                        
-                        //título guardar roupas e subtítulo
-                        VStack(alignment: .leading, spacing: 8){
-                            Text(title)
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .kerning(0.36)
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(Color(uiColor: .darkGray))
-                            
-                            Text("Siga esses passos.")
+                        NavigationLink{
+                            AskInputView()
+                        }label:{
+                            Image(systemName: "character.bubble.fill")
                                 .font(.body)
-                                .multilineTextAlignment(.center)
                                 .foregroundColor(Color(uiColor: .darkGray))
+                                .frame(width: 36, height: 36, alignment: .center)
+                                .background(Color(uiColor: .systemGray3))
+                                .cornerRadius(36)
+                            
+                            //título guardar roupas e subtítulo
+                            VStack(alignment: .leading, spacing: 8){
+                                Text(title)
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .kerning(0.36)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Color(uiColor: .darkGray))
+                                
+                                Text("Siga esses passos.")
+                                    .font(.body)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(Color(uiColor: .darkGray))
+                            }
                         }
                         
                     }
@@ -61,91 +64,29 @@ struct InventoryView: View {
                     
                     HStack{
                         Spacer()
-                        Image(systemName: "rectangle.3.group.fill")
-                            .font(.body)
-                            .foregroundColor(Color(uiColor: .darkGray))
-                            .frame(width: 36, height: 36, alignment: .center)
+                        NavigationLink{
+                            ResultsFocusView(title: title, steps: steps, descs: descs)
+                        } label: {
+                            Image(systemName: "rectangle.3.group.fill")
+                                .font(.headline)
+                                .foregroundColor(Color(uiColor: .darkGray))
+                        }
                     }
                     .padding(.horizontal, 45)
                     ScrollView {
                         ZStack{
                             VStack {
                                 //                            ForEach(steps, id: \.self){ item in
-                                ForEach(0..<steps.count, id: \.self) { i in
+                                ForEach(0..<descs.count, id: \.self) { i in
                                     HStack {
                                         VStack(alignment: .leading) {
-                                            Text(steps[i])
+                                            Text(descs[i])
                                                 .font(.body)
                                                 .foregroundColor(Color(uiColor: .black))
-                                            if i < descs.count{
-                                                Text(descs[i])
-                                                    .font(.caption)
-                                                    .opacity(0.6)
-                                            }else{
-                                                Text("--")
-                                                    .font(.caption)
-                                                    .opacity(0.6)
-                                            }
-                                            
-                                            if i == descs.count-1{
-                                                //
-                                            }else{
-                                                //Divider()
-                                            }
                                         }
                                         .padding(.bottom, 33)
                                         Spacer()
-                                            if i == 0{
-                                                VStack(spacing: 0) {
-                                                    ZStack {
-                                                        Circle()
-                                                            .frame(width: 24, height: 24)
-                                                            .foregroundColor(Color(uiColor: .systemGray3))
-                                                        Circle()
-                                                            .frame(width: 12, height: 12)
-                                                            .foregroundColor(Color(uiColor: .systemGray))
-                                                            .frame(width: 24, height: 24)
-                                                    }
-                                                    Line()
-                                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
-                                                        .frame(width: 2, height: 40)
-                                                        .foregroundColor(Color(uiColor: .systemGray3))
-                                                }
-                                            }else if i == steps.count-1{
-                                                VStack(spacing: 0) {
-                                                    Line()
-                                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
-                                                        .frame(width: 2, height: 47)
-                                                        .foregroundColor(Color(uiColor: .systemGray3))
-                                                    Circle()
-                                                        .frame(width: 12, height: 12)
-                                                        .foregroundColor(.clear)
-                                                        .overlay(content: {
-                                                            Circle()
-                                                                .stroke(Color(uiColor: .systemGray3), lineWidth: 2)
-                                                    })
-                                                        .frame(width: 24, height: 24)
-                                                }
-                                            }else{
-                                                VStack(spacing: 0) {
-                                                    Line()
-                                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
-                                                        .frame(width: 2, height: 20)
-                                                        .foregroundColor(Color(uiColor: .systemGray3))
-                                                    Circle()
-                                                        .frame(width: 12, height: 12)
-                                                        .foregroundColor(.clear)
-                                                        .overlay(content: {
-                                                            Circle()
-                                                                .stroke(Color(uiColor: .systemGray3), lineWidth: 2)
-                                                    })
-                                                        .frame(width: 24, height: 24)
-                                                    Line()
-                                                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
-                                                        .frame(width: 2, height: 20)
-                                                        .foregroundColor(Color(uiColor: .systemGray3))
-                                                }
-                                            }
+                                            
                                     }
                                     .padding(.horizontal, 45)
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -222,6 +163,7 @@ struct InventoryView: View {
                 .padding(.top, 48)
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
