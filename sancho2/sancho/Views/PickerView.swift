@@ -28,8 +28,12 @@ struct PickerView: View {
                         Text("Passos").tag(true)
                         Text("Itens").tag(false)
                         
-                    }.pickerStyle(.segmented)
-                        .padding(16)
+                    }
+                    .padding(.top, 16)
+                    .pickerStyle(.segmented)
+                    .padding(.horizontal, 16)
+                    .padding(.leading, 56)
+                        
                      
                     Spacer()
                 }

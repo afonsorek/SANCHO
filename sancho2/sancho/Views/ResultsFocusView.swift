@@ -28,37 +28,48 @@ struct ResultsFocusView: View {
                     
                 
                 VStack {
-                    NavigationLink {
-                        AskInputView()
-                    } label: {
-                        HStack(spacing: 48 ) {
-                            Image(systemName: "chevron.left")
-                                .bold()
-                                .padding()
-                                .frame(width: 36, height: 36)
-                                .background(Color(uiColor: .white))
-                                .cornerRadius(18)
-                                .foregroundColor(Color("Dark Purple"))
-                            
-                        Text(title)
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color("Dark Purple"))
-                            
+                    HStack {
+                        NavigationLink {
+                            AskInputView()
+                        } label: {
+                                Image(systemName: "chevron.left")
+                                    .bold()
+                                    .frame(alignment: .leading)
+                                    .padding(.vertical,8)
+                                    .frame(width: 36, height: 36)
+                                    .background(Color(uiColor: .white))
+                                    .cornerRadius(18)
+                                    .foregroundColor(Color("Dark Purple"))
                     }
-                  }
+                        Spacer()
+                            
+                    } .padding(.leading, 16)
+                      .padding(.top, 64)
+                      .padding(.top, 10)
+                    Text(title)
+                        .frame(maxWidth: 290)
+                        .multilineTextAlignment(.leading)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("Dark Purple"))
+                        
+                    
                     Spacer()
-                }.padding(.vertical, 92)
+                        .padding(.leading, 16.0)
+                    
+                    
+                    
+                }
+                
                
                 
                 HStack {
-                    TabView(selection: $currentStep) { //esse aqui eu criei pra ele saber em que passo está e passar para o próximo ao criar, tem q criar um @State private var currentStep = 0 se for usar
-                        
+                    TabView(selection: $currentStep) {
                         ForEach(steps.indices, id: \.self) { index in
                             let item = steps[index]
                             let checked = Binding(
                                 get: { checkedStates[index] },
-                                set: { checkedStates[index] = $0 } //esse é a parte de index que ajuda na alteração das coisas tbm
+                                set: { checkedStates[index] = $0 }
                             )
                             
                             HStack(alignment: .center) {
@@ -72,11 +83,9 @@ struct ResultsFocusView: View {
                                         .alignmentGuide(.leading) { dimensions in
                                             -dimensions.width / 2
                                         }
-                                        .border(checked.wrappedValue ? Color(uiColor: .white) : Color(uiColor: .white).opacity(0)) // como eu coloco a borda arredondada nisso?
+                                        .border(checked.wrappedValue ? Color("Purple") : Color(uiColor: .white).opacity(0)) // como eu coloco a borda arredondada nisso?
                                     
-                                    // preciso que o card considerado anterior no momento esteja com o symbol "ellipsis", como eu faço?
                                     
-//                                        Image(systemName:)(checked.wrappedValue ? ("checkmark") : ("ellipsis"))
 //                                        .cornerRadius(checked.wrappedValue ? 15 : 16)
                                     
                                     VStack(alignment: .center) {
@@ -86,6 +95,8 @@ struct ResultsFocusView: View {
                                             .foregroundColor(Color("Dark Purple"))
 //                                            .multilineTextAlignment(.leading)
                                             .frame(width: 207, height: 400)
+//                                            .frame(maxWidth: 240)
+
                                         Button {
                                             withAnimation {
                                                 checked.wrappedValue.toggle()
@@ -96,11 +107,11 @@ struct ResultsFocusView: View {
                                                 
                                             }
                                         } label: {
-                                            Image(systemName: "checkmark")
+                                            Image(systemName: checked.wrappedValue ? "checkmark.circle.fill" : "circle")
                                                 .resizable()
                                                 .font(.title)
-                                                .frame(width: 28, height: 28)
-                                                .fontWeight(.bold)
+                                                .frame(width: 36, height: 36)
+                                                
                                                 .padding(4)
                                                 .foregroundColor(Color("Purple"))
                                                 

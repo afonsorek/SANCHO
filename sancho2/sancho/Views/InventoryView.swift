@@ -44,7 +44,7 @@ struct InventoryView: View {
                             VStack(alignment: .leading){
                                 Text(title)
                                     .multilineTextAlignment(.leading)
-                                    .font(.title2)
+                                    .font(.title)
                                     .fontWeight(.bold)
                                     .foregroundColor(Color("Dark Purple"))
                             }
