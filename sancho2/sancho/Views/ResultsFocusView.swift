@@ -40,7 +40,7 @@ struct ResultsFocusView: View {
                                 .cornerRadius(18)
                                 .foregroundColor(Color("Dark Purple"))
                             
-                        Text(title)
+                            Text(title)
                                 .font(.title)
                                 .fontWeight(.bold)
                                 .foregroundColor(Color("Dark Purple"))

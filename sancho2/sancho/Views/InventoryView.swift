@@ -33,28 +33,26 @@ struct InventoryView: View {
                         }label:{
                             //ícone
                             Image(systemName: "chevron.left")
-                                .font(.body)
                                 .bold()
                                 .foregroundColor(Color("Dark Purple"))
                                 .frame(width: 36, height: 36, alignment: .center)
                                 .background(Color("White"))
                                 .cornerRadius(18)
-                            
-                            //título guardar roupas
-                            VStack(alignment: .leading){
-                                Text(title)
-                                    .multilineTextAlignment(.leading)
-                                    .font(.title2)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color("Dark Purple"))
-                            }
+                                .padding(.vertical, 10)
                             //.padding(.leading, 10)
-                            
                         }
+                        Spacer()
                         
                     }
-                    .padding(.top, 94)
+                    .padding(.top, 64)
+
                     
+                    Text(title)
+                        .frame(maxWidth: 290)
+                        .multilineTextAlignment(.leading)
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color("Dark Purple"))
                     //botão flutuante
 //                    HStack{
 //                        Spacer()
@@ -75,43 +73,49 @@ struct InventoryView: View {
                         ZStack{
                             VStack(alignment: .leading, spacing: 24) {
                                 ForEach(0..<descs.count, id: \.self) { i in
-                                    let isSelected = selectedItems.contains(i)
-                                    HStack() {
-                                        VStack(alignment: .leading) {
-                                            Text(descs[i])
+                                    if descs[i] != ""{
+                                        let isSelected = selectedItems.contains(i)
+                                        HStack() {
+                                            VStack(alignment: .leading) {
+                                                Text(descs[i])
+                                                    .font(.body)
+                                                    .foregroundColor(Color("Dark Purple"))
+                                            }
+                                            
+                                            Spacer()
+                                            
+                                            Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                                                 .font(.body)
-                                                .foregroundColor(Color("Dark Purple"))
+                                                .foregroundColor(Color("Purple"))
+                                                .bold()
+                                                .opacity(isSelected ? 1 : 1)
+                                                .frame(width: 14.3, height: 14.2, alignment: .center)
                                         }
-                                        
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "checkmark")
-                                            .font(.body)
-                                            .foregroundColor(Color("Dark Purple"))
-                                            .opacity(isSelected ? 1 : 0)
-                                            .frame(width: 14.3, height: 14.2, alignment: .center)
-                                    }
-                                    .padding(.horizontal, 16)
-                                    .padding(.vertical, 9)
-                                    .background(isSelected ? Color("White") : .clear)
-                                    .frame(maxWidth: 240)
-                                    .cornerRadius(4)
-                                    .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
-                                    .inset(by: 0.5)
-                                    .stroke(isSelected ? .clear : Color("Light Purple"), lineWidth: 1))
-                                    .onTapGesture {
-                                        if selectedItems.contains(i){
-                                            selectedItems.remove(i)
+                                        .padding(.horizontal, 16)
+                                        .padding(.vertical, 9)
+                                        .background(isSelected ? .clear : Color("White"))
+                                        .frame(width: 240)
+                                        .cornerRadius(4)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 4)
+                                                .inset(by: 0.5)
+                                                .stroke(isSelected ? Color("Light Purple") : .clear, lineWidth: 1))
+                                        .onTapGesture {
+                                            if selectedItems.contains(i){
+                                                selectedItems.remove(i)
+                                            }
+                                            else {
+                                                selectedItems.insert(i)
+                                            }
                                         }
-                                        else {
-                                            selectedItems.insert(i)
-                                        }
+                                    }else{
+                                        //
                                     }
                                     
                                 }
-                            }.frame(maxWidth: .infinity)
+                            }
+                            .padding(.top, 24)
+                            .frame(maxWidth: .infinity)
 //                            HStack{
 //                                Spacer()
 //                                VStack {
@@ -178,8 +182,7 @@ struct InventoryView: View {
                         }
                     }
                 }
-                
-                .padding(.horizontal, 23)
+                .padding(.horizontal, 16)
                
             }
             //gradiente de fundo
