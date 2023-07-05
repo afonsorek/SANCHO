@@ -32,10 +32,11 @@ struct InventoryView: View {
                             
                         }label:{
                             //ícone
-                            Image(systemName: "character.cursor.ibeam")
+                            Image(systemName: "chevron.left")
                                 .font(.body)
+                                .bold()
                                 .foregroundColor(Color("Dark Purple"))
-                                .frame(width: 40, height: 36, alignment: .center)
+                                .frame(width: 36, height: 36, alignment: .center)
                                 .background(Color("White"))
                                 .cornerRadius(18)
                             

@@ -27,7 +27,10 @@ struct PickerView: View {
                     Picker("View", selection: $selection) {
                         Text("Passos").tag(true)
                         Text("Itens").tag(false)
+                        
                     }.pickerStyle(.segmented)
+                        .padding(16)
+                     
                     Spacer()
                 }
             }
