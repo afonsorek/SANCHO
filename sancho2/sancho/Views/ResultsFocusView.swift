@@ -50,12 +50,13 @@ struct ResultsFocusView: View {
                
                 
                 HStack {
-                    TabView(selection: $currentStep) {
+                    TabView(selection: $currentStep) { //esse aqui eu criei pra ele saber em que passo está e passar para o próximo ao criar, tem q criar um @State private var currentStep = 0 se for usar
+                        
                         ForEach(steps.indices, id: \.self) { index in
                             let item = steps[index]
                             let checked = Binding(
                                 get: { checkedStates[index] },
-                                set: { checkedStates[index] = $0 }
+                                set: { checkedStates[index] = $0 } //esse é a parte de index que ajuda na alteração das coisas tbm
                             )
                             
                             HStack(alignment: .center) {
@@ -69,7 +70,11 @@ struct ResultsFocusView: View {
                                         .alignmentGuide(.leading) { dimensions in
                                             -dimensions.width / 2
                                         }
-                                        .border(checked.wrappedValue ? Color(uiColor: .white) : Color(uiColor: .white).opacity(0))
+                                        .border(checked.wrappedValue ? Color(uiColor: .white) : Color(uiColor: .white).opacity(0)) // como eu coloco a borda arredondada nisso?
+                                    
+                                    // preciso que o card considerado anterior no momento esteja com o symbol "ellipsis", como eu faço?
+                                    
+//                                        Image(systemName:)(checked.wrappedValue ? ("checkmark") : ("ellipsis"))
 //                                        .cornerRadius(checked.wrappedValue ? 15 : 16)
                                     
                                     VStack(alignment: .center) {
