@@ -7,6 +7,7 @@ struct ResultsFocusView: View {
     var descs: [String]
     
     @State private var checkedStates: [Bool]
+    @State private var currentStep = 0
     
     init(title: String, steps: [String], descs: [String]) {
         self.title = title
@@ -18,44 +19,50 @@ struct ResultsFocusView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                VStack {
-                    HStack(spacing: 16) {
-                        NavigationLink(destination: AskInputView()) {
-                            Image(systemName: "character.bubble.fill")
-                                .padding()
-                                .frame(width: 36, height: 36)
-                                .background(Color(uiColor: .systemGray5))
-                                .cornerRadius(18)
-                                .foregroundColor(Color(uiColor: .systemGray))
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text(title)
-                                    .font(.largeTitle)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(Color(uiColor: .systemGray))
-                                Text("Siga esses passos.")
-                                    .font(.callout)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(Color(uiColor: .systemGray))
-                            }
-                        }
-                    }
+                Rectangle()
+
+                     .frame(maxWidth: .infinity,maxHeight: .infinity)
+                     .foregroundColor(Color(uiColor: .white))
+                     .ignoresSafeArea()
+                     .opacity(0.55)
                     
+                
+                VStack {
+                    
+                    HStack(spacing: 48 ) {
+                        NavigationLink(destination: AskInputView()) {
+                            Image(systemName: "character.cursor.ibeam")
+                                .padding()
+                                .frame(width: 40, height: 36)
+                                .background(Color(uiColor: .white))
+                                .cornerRadius(18)
+                                .foregroundColor(Color("Dark Purple"))
+                            
+                        Text(title)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("Dark Purple"))
+                            
+                    }
+                  }
                     Spacer()
-                }
+                }.padding(.vertical, 92)
+               
                 
                 HStack {
-                    TabView {
+                    TabView(selection: $currentStep) { //esse aqui eu criei pra ele saber em que passo está e passar para o próximo ao criar, tem q criar um @State private var currentStep = 0 se for usar
+                        
                         ForEach(steps.indices, id: \.self) { index in
                             let item = steps[index]
                             let checked = Binding(
                                 get: { checkedStates[index] },
-                                set: { checkedStates[index] = $0 }
+                                set: { checkedStates[index] = $0 } //esse é a parte de index que ajuda na alteração das coisas tbm
                             )
                             
                             HStack(alignment: .center) {
                                 ZStack(alignment: .center) {
                                     Rectangle()
-                                        .foregroundColor(checked.wrappedValue ? Color(uiColor: .green) : Color(uiColor: .systemGray3))
+                                        .foregroundColor(checked.wrappedValue ? Color(uiColor: .white).opacity(0): Color(uiColor: .white))
                                         .frame(width: 207, height: 526)
                                         .cornerRadius(16)
                                         .padding(.leading, 8)
@@ -63,33 +70,47 @@ struct ResultsFocusView: View {
                                         .alignmentGuide(.leading) { dimensions in
                                             -dimensions.width / 2
                                         }
+                                        .border(checked.wrappedValue ? Color(uiColor: .white) : Color(uiColor: .white).opacity(0)) // como eu coloco a borda arredondada nisso?
+                                    
+                                    // preciso que o card considerado anterior no momento esteja com o symbol "ellipsis", como eu faço?
+                                    
+//                                        Image(systemName:)(checked.wrappedValue ? ("checkmark") : ("ellipsis"))
+//                                        .cornerRadius(checked.wrappedValue ? 15 : 16)
                                     
                                     VStack(alignment: .center) {
                                         Text(item)
-                                            .font(.body)
-                                            .foregroundColor(Color(uiColor: .black))
-                                            .multilineTextAlignment(.center)
+                                            .font(.title)
+                                            .bold()
+                                            .foregroundColor(Color("Dark Purple"))
+//                                            .multilineTextAlignment(.leading)
                                             .frame(width: 207, height: 400)
                                         Button {
-                                            checked.wrappedValue.toggle()
+                                            withAnimation {
+                                                checked.wrappedValue.toggle()
+                                                currentStep += 1
+                                                if currentStep >= 3 {
+                                                    currentStep = 0
+                                                }
+                                                
+                                            }
                                         } label: {
-                                            Image(systemName: "checkmark.circle.fill")
+                                            Image(systemName: "checkmark")
                                                 .resizable()
-                                                .frame(width: 50, height: 50, alignment: .center)
+                                                .font(.title)
+                                                .frame(width: 28, height: 28)
+                                                .fontWeight(.bold)
                                                 .padding(4)
-                                                .foregroundColor(Color(uiColor: .systemGray))
-                                                .overlay(
-                                                    Circle()
-                                                        .stroke(Color.gray, lineWidth: 4)
-                                                )
+                                                .foregroundColor(Color("Purple"))
+                                                
                                         }
                                     }
                                 }
                                 .padding(.horizontal, 16)
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .frame(maxWidth: .infinity, alignment: .center)
                                 .background(Color.clear)
                             }
                             .ignoresSafeArea()
+                            .tag(index)
                         }
                     }
                     .tabViewStyle(.page(indexDisplayMode: .automatic))
@@ -99,18 +120,27 @@ struct ResultsFocusView: View {
                         Spacer()
                         HStack{
                             NavigationLink(destination: InventoryView(title: title, steps: steps, descs: descs)) {
-                                Image(systemName: "list.bullet.rectangle.portrait.fill")
-                                    .font(.title2)
-                                    .foregroundColor(Color(uiColor: .gray))
+                                Image(systemName: "sparkles.tv.fill")
+                                    .font(.title3)
+                                    .frame(width: 49, height: 45)
+                                    .background(Color("Dark Purple"))
+                                    .cornerRadius(22)
+                                    .foregroundColor(Color(uiColor: .white))
+                                    
                             }
                         }
                         Rectangle()
                             .opacity(0.0)
-                            .frame(width: 0.1, height: 600)
+                            .frame(width: 0.1, height: 34)
                     }
                 }
                 .padding(.trailing, 20.0)
             }
+            .background(
+                  RadialGradient(gradient: Gradient(colors: [Color(red: 0.6, green: 0.72, blue: 0.85), Color(red: 0.73, green: 0.64, blue: 0.85), Color(red: 0.78, green: 0.7, blue: 0.77), Color(red: 0.85, green: 0.78, blue: 0.68)]), center: .topTrailing, startRadius: 0, endRadius: 1200)
+                      .frame(maxWidth: .infinity, maxHeight: .infinity)
+                              )
+            .ignoresSafeArea()
         }
         .navigationBarBackButtonHidden()
     }
