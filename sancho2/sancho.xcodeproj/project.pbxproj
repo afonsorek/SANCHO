@@ -43,7 +43,7 @@
 		A955D5842A4B6A6900E692E7 /* AskInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskInputView.swift; sourceTree = "<group>"; };
 		A955D5862A4B70E300E692E7 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
 		A955D58A2A4CC9B700E692E7 /* ResultsFocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsFocusView.swift; sourceTree = "<group>"; };
-		F77B04172A44BBBA0091F907 /* sancho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sancho.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F77B04172A44BBBA0091F907 /* Spark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spark.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77B041A2A44BBBA0091F907 /* sanchoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sanchoApp.swift; sourceTree = "<group>"; };
 		F77B041C2A44BBBA0091F907 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F77B041E2A44BBBB0091F907 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		F77B04182A44BBBA0091F907 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F77B04172A44BBBA0091F907 /* sancho.app */,
+				F77B04172A44BBBA0091F907 /* Spark.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,7 +216,7 @@
 				A955D57F2A44CD1F00E692E7 /* OpenAIKit */,
 			);
 			productName = sancho;
-			productReference = F77B04172A44BBBA0091F907 /* sancho.app */;
+			productReference = F77B04172A44BBBA0091F907 /* Spark.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -417,10 +417,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"sancho/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 38NCR48QFB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sancho/Info.plist;
@@ -436,8 +438,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucasnakano.spark;
+				PRODUCT_NAME = Spark;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = SparkAppDev;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -450,10 +454,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"sancho/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 38NCR48QFB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sancho/Info.plist;
@@ -469,8 +475,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lucasnakano.spark;
+				PRODUCT_NAME = Spark;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = SparkAppDev;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

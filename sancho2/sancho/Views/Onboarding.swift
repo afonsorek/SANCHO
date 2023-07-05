@@ -66,12 +66,14 @@ struct Onboarding: View {
                     Spacer()
                     
                 }
+                .padding(.bottom, 100)
             }
             .background(
                 RadialGradient(gradient: Gradient(colors: [Color(red: 0.6, green: 0.72, blue: 0.85), Color(red: 0.73, green: 0.64, blue: 0.85), Color(red: 0.78, green: 0.7, blue: 0.77), Color(red: 0.85, green: 0.78, blue: 0.68)]), center: .topTrailing, startRadius: 0, endRadius: 1200)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             )
             .ignoresSafeArea()
+            
         }
     }
 }

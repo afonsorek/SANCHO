@@ -28,7 +28,9 @@ struct ResultsFocusView: View {
                     
                 
                 VStack {
-                    NavigationLink(destination: AskInputView()) {
+                    NavigationLink {
+                        AskInputView()
+                    } label: {
                         HStack(spacing: 48 ) {
                             Image(systemName: "character.cursor.ibeam")
                                 .padding()
@@ -117,14 +119,15 @@ struct ResultsFocusView: View {
                     
                     VStack(spacing: 4) {
                         Spacer()
+                        NavigationLink{
+                            InventoryView(title: title, steps: steps, descs: descs)
+                        } label: {
                         HStack{
-                            NavigationLink(destination: InventoryView(title: title, steps: steps, descs: descs)) {
                                 Image(systemName: "sparkles.tv.fill")
                                     .font(.title3)
                                     .frame(width: 49, height: 45)
                                     .background(Color("Dark Purple"))
                                     .cornerRadius(22)
-                                    .foregroundColor(Color(uiColor: .white))
                                     
                             }.disabled(true)
                                 .opacity(0)
