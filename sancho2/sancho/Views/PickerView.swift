@@ -23,7 +23,7 @@ struct PickerView: View {
                 }else{
                     InventoryView(title: title, steps: steps, descs: descs)
                 }
-                VStack{
+                VStack {
                     Picker("View", selection: $selection) {
                         Text("Itens").tag(false)
                         Text("Passos").tag(true)

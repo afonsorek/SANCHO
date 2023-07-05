@@ -32,9 +32,10 @@ struct ResultsFocusView: View {
                         AskInputView()
                     } label: {
                         HStack(spacing: 48 ) {
-                            Image(systemName: "character.cursor.ibeam")
+                            Image(systemName: "chevron.left")
+                                .bold()
                                 .padding()
-                                .frame(width: 40, height: 36)
+                                .frame(width: 36, height: 36)
                                 .background(Color(uiColor: .white))
                                 .cornerRadius(18)
                                 .foregroundColor(Color("Dark Purple"))
