@@ -14,7 +14,7 @@ struct SplashScreen: View {
     var body: some View {
         ZStack {
             if self.isActive {
-                AskInputView()
+                Onboarding()
             } else {
                 ZStack{
                 Image("logo-image")
@@ -29,9 +29,9 @@ struct SplashScreen: View {
         
         .onAppear{
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                withAnimation {
+
                     self.isActive = true
-                }
+
             }
         }
     }
