@@ -12,21 +12,21 @@ struct Onboarding: View {
     @State var dataModel = DataModel()
     
     var body: some View {
-    
-        ZStack {
-            VStack (spacing: 48){
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
-                
+        NavigationStack{
+            ZStack {
+                VStack (spacing: 48){
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    
                     VStack (alignment: .center, spacing: 8){
                         VStack(spacing: 56){
                             Image("Logo")
                                 .opacity(0.7)
                             Text("Spark te ajuda a cumprir suas metas levando em conta as dificuldades do TDAH.")
-                                .frame(width: 303)
+                                .frame(width: 303, height: 84)
                                 .foregroundColor(Color("DarkPurple"))
                                 .font(.title2)
                                 .fontWeight(.bold)
@@ -50,10 +50,10 @@ struct Onboarding: View {
                         .tabViewStyle(.page)
                         .frame(height: 200)
                     }
-                
-                    Button(action: {
-                       // ir pro AskInputView
-                    }) {
+                    
+                    NavigationLink {
+                        AskInputView()
+                    } label: {
                         Text("Começar")
                             .font(.body)
                             .fontWeight(.bold)
@@ -63,14 +63,16 @@ struct Onboarding: View {
                             .background(Color("Purple"))
                             .cornerRadius(12)
                     }
-                Spacer()
+                    Spacer()
+                    
+                }
             }
+            .background(
+                RadialGradient(gradient: Gradient(colors: [Color(red: 0.6, green: 0.72, blue: 0.85), Color(red: 0.73, green: 0.64, blue: 0.85), Color(red: 0.78, green: 0.7, blue: 0.77), Color(red: 0.85, green: 0.78, blue: 0.68)]), center: .topTrailing, startRadius: 0, endRadius: 1200)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            )
+            .ignoresSafeArea()
         }
-        .background(
-            RadialGradient(gradient: Gradient(colors: [Color(red: 0.6, green: 0.72, blue: 0.85), Color(red: 0.73, green: 0.64, blue: 0.85), Color(red: 0.78, green: 0.7, blue: 0.77), Color(red: 0.85, green: 0.78, blue: 0.68)]), center: .topTrailing, startRadius: 0, endRadius: 1200)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-        )
-        .ignoresSafeArea()
     }
 }
 

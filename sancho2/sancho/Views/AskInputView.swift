@@ -144,6 +144,7 @@ struct AskInputView: View {
 //            )
 //            )
         }
+        .transition(.scale)
         .navigationBarBackButtonHidden()
     }
     

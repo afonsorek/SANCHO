@@ -13,7 +13,7 @@ struct sanchoApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AskInputView()
+            Onboarding()
         }
     }
 }
