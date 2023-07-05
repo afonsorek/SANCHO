@@ -28,9 +28,8 @@ struct ResultsFocusView: View {
                     
                 
                 VStack {
-                    
-                    HStack(spacing: 48 ) {
-                        NavigationLink(destination: AskInputView()) {
+                    NavigationLink(destination: AskInputView()) {
+                        HStack(spacing: 48 ) {
                             Image(systemName: "character.cursor.ibeam")
                                 .padding()
                                 .frame(width: 40, height: 36)
@@ -127,7 +126,8 @@ struct ResultsFocusView: View {
                                     .cornerRadius(22)
                                     .foregroundColor(Color(uiColor: .white))
                                     
-                            }
+                            }.disabled(true)
+                                .opacity(0)
                         }
                         Rectangle()
                             .opacity(0.0)

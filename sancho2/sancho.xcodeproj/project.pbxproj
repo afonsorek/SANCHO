@@ -13,6 +13,7 @@
 		09B9A6B12A548C4C007C1B9D /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B9A6B02A548C4C007C1B9D /* Onboarding.swift */; };
 		548ED3652A4CB2C100E59050 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548ED3642A4CB2C100E59050 /* CardView.swift */; };
 		548ED3672A4CC89300E59050 /* ResultsFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548ED3662A4CC89300E59050 /* ResultsFocusView.swift */; };
+		A94CC5172A55A47600B59D76 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94CC5162A55A47600B59D76 /* PickerView.swift */; };
 		A955D5802A44CD1F00E692E7 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = A955D57F2A44CD1F00E692E7 /* OpenAIKit */; };
 		A955D5822A4A082300E692E7 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A955D5812A4A082300E692E7 /* ItemModel.swift */; };
 		A955D5852A4B6A6900E692E7 /* AskInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A955D5842A4B6A6900E692E7 /* AskInputView.swift */; };
@@ -37,6 +38,7 @@
 		09B9A6B02A548C4C007C1B9D /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		548ED3642A4CB2C100E59050 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		548ED3662A4CC89300E59050 /* ResultsFocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsFocusView.swift; sourceTree = "<group>"; };
+		A94CC5162A55A47600B59D76 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 		A955D5812A4A082300E692E7 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		A955D5842A4B6A6900E692E7 /* AskInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskInputView.swift; sourceTree = "<group>"; };
 		A955D5862A4B70E300E692E7 /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				A955D5842A4B6A6900E692E7 /* AskInputView.swift */,
 				548ED3642A4CB2C100E59050 /* CardView.swift */,
 				548ED3662A4CC89300E59050 /* ResultsFocusView.swift */,
+				A94CC5162A55A47600B59D76 /* PickerView.swift */,
 				09B9A6AE2A548C3C007C1B9D /* SplashScreen.swift */,
 				09B9A6B02A548C4C007C1B9D /* Onboarding.swift */,
 			);
@@ -280,6 +283,7 @@
 				F7E536862A4615D800A8C353 /* HomeViewModel.swift in Sources */,
 				548ED3652A4CB2C100E59050 /* CardView.swift in Sources */,
 				F77B041B2A44BBBA0091F907 /* sanchoApp.swift in Sources */,
+				A94CC5172A55A47600B59D76 /* PickerView.swift in Sources */,
 				F7E536832A4614FC00A8C353 /* HomeView.swift in Sources */,
 				548ED3672A4CC89300E59050 /* ResultsFocusView.swift in Sources */,
 				F77B04272A44BBBB0091F907 /* sancho.xcdatamodeld in Sources */,
@@ -416,10 +420,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"sancho/Preview Content\"";
-				DEVELOPMENT_TEAM = LT238A4Q5J;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sancho/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Spark;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -430,7 +436,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.berkspar.sancho;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -448,10 +453,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"sancho/Preview Content\"";
-				DEVELOPMENT_TEAM = LT238A4Q5J;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = sancho/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Spark;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -462,7 +469,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.berkspar.sancho;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
