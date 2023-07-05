@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct PickerView: View {
-    @State var selection = false
+    @State var selection = true
     
     var title: String
     var steps: [String]
@@ -25,8 +25,8 @@ struct PickerView: View {
                 }
                 VStack {
                     Picker("View", selection: $selection) {
-                        Text("Itens").tag(false)
                         Text("Passos").tag(true)
+                        Text("Itens").tag(false)
                     }.pickerStyle(.segmented)
                     Spacer()
                 }
