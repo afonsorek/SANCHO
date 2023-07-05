@@ -52,7 +52,7 @@ struct AskInputView: View {
                             .cornerRadius(1000)
                         
                         NavigationLink {
-                            ResultsFocusView(title: prompt, steps: arrayInv, descs: arrayDesc)
+                            PickerView(title: prompt, steps: arrayInv, descs: arrayDesc)
                         } label: {
                             if animation == false && secCheck == false{
                                 HStack(alignment: .center, spacing: 10) {
