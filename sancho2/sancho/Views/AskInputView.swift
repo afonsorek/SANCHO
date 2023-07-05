@@ -62,9 +62,8 @@ struct AskInputView: View {
                                 .padding(.horizontal, 20)
                                 .padding(.vertical, 14)
                                 .frame(width: 361, height: 36, alignment: .center)
-                                .cornerRadius(10)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
+                                    RoundedRectangle(cornerRadius: 5)
                                         .stroke(Color(red: 0.26, green: 0.28, blue: 0.43), lineWidth: 1)
                                 )
                                 
