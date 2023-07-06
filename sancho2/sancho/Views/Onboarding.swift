@@ -55,13 +55,12 @@ struct Onboarding: View {
                         AskInputView()
                     } label: {
                         Text("Começar")
-                            .font(.body)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color("White"))
-                            .padding()
-                            .frame(width: 260)
-                            .background(Color("Purple"))
-                            .cornerRadius(12)
+                            .foregroundColor(.white)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 14)
+                            .frame(width: 361, height: 36, alignment: .center)
+                            .background(Color(red: 0.53, green: 0.44, blue: 0.87))
+                            .cornerRadius(10)
                     }
                     Spacer()
                     
