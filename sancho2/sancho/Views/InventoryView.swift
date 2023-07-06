@@ -116,6 +116,9 @@ struct InventoryView: View {
                                     }
                                     
                                 }
+                                Rectangle()
+                                    .frame(height: 50)
+                                    .foregroundColor(Color(white: 100, opacity: 0.0))
                             }
                             .padding(.top, 24)
                             .frame(maxWidth: .infinity)

@@ -23,6 +23,8 @@ struct AskInputView: View {
     
     @State var itemList: Array<Any> = []
     
+    @Environment(\.colorScheme) var colorScheme
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         @State var leftOffset: CGFloat = -100
         @State var rightOffset: CGFloat = 100
@@ -44,12 +46,20 @@ struct AskInputView: View {
                     }
                     
                     VStack(spacing: 0){
-                        TextField("Ex.: Quero limpar minha casa", text: $prompt)
-                            .foregroundColor(Color("White"))
-                            .frame(width: 361, height: 36, alignment: .center)
-                            .padding(.horizontal, 40)
-                            .textFieldStyle(.roundedBorder)
-                            .cornerRadius(1000)
+                        if colorScheme == .dark{
+                            TextField("Ex.: Quero limpar minha casa", text: $prompt)
+                                .frame(width: 361, height: 36, alignment: .center)
+                                .padding(.horizontal, 40)
+                                .textFieldStyle(.roundedBorder)
+                                .cornerRadius(1000)
+                                .colorInvert()
+                        }else{
+                            TextField("Ex.: Quero limpar minha casa", text: $prompt)
+                                .frame(width: 361, height: 36, alignment: .center)
+                                .padding(.horizontal, 40)
+                                .textFieldStyle(.roundedBorder)
+                                .cornerRadius(1000)
+                        }
                         
                         NavigationLink {
                             PickerView(title: prompt, steps: arrayInv, descs: arrayDesc)
