@@ -71,10 +71,11 @@ struct InventoryView: View {
                     
                     ScrollView {
                         ZStack{
-                            VStack(alignment: .leading, spacing: 24) {
+                            VStack(alignment: .center, spacing: 24) {
                                 ForEach(0..<descs.count, id: \.self) { i in
                                     if descs[i] != ""{
                                         let isSelected = selectedItems.contains(i)
+                                        var frame = 278
                                         HStack() {
                                             VStack(alignment: .leading) {
                                                 Text(descs[i])
@@ -83,7 +84,6 @@ struct InventoryView: View {
                                             }
                                             
                                             Spacer()
-                                            
                                             Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                                                 .font(.body)
                                                 .foregroundColor(Color("Purple"))
@@ -94,18 +94,21 @@ struct InventoryView: View {
                                         .padding(.horizontal, 16)
                                         .padding(.vertical, 9)
                                         .background(isSelected ? .clear : Color("White"))
-                                        .frame(width: 240)
+                                        .frame(width: isSelected ? 248 : 278)
                                         .cornerRadius(4)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 4)
                                                 .inset(by: 0.5)
                                                 .stroke(isSelected ? Color("Light Purple") : .clear, lineWidth: 1))
                                         .onTapGesture {
+                                            withAnimation{
                                             if selectedItems.contains(i){
                                                 selectedItems.remove(i)
                                             }
                                             else {
                                                 selectedItems.insert(i)
+                                            }
+                                                frame = isSelected ? 248 : 278
                                             }
                                         }
                                     }else{
