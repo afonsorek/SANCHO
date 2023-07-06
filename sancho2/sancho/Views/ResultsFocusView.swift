@@ -32,124 +32,128 @@ struct ResultsFocusView: View {
                         NavigationLink {
                             AskInputView()
                         } label: {
-                                Image(systemName: "chevron.left")
-                                    .bold()
-                                    .frame(alignment: .leading)
-                                    .padding(.vertical,8)
-                                    .frame(width: 36, height: 36)
-                                    .background(Color(uiColor: .white))
-                                    .cornerRadius(18)
-                                    .foregroundColor(Color("Dark Purple"))
-                    }
+                            Image(systemName: "chevron.left")
+                                .bold()
+                                .frame(alignment: .leading)
+                                .padding(.vertical,8)
+                                .frame(width: 36, height: 36)
+                                .background(Color("White"))
+                                .cornerRadius(18)
+                                .foregroundColor(Color("Dark Purple"))
+                        }
                         Spacer()
-                            
+                        
                     } .padding(.leading, 16)
-                      .padding(.top, 64)
-                      .padding(.top, 10)
+                        .padding(.top, 64)
+                        .padding(.top, 10)
                     Text(title)
-                        .frame(maxWidth: 290)
+                        .frame(width: 290)
                         .multilineTextAlignment(.leading)
                         .font(.title)
                         .fontWeight(.bold)
                         .foregroundColor(Color("Dark Purple"))
-                        
+                        .padding(.top, 12.6)
                     
-                    Spacer()
-                        .padding(.leading, 16.0)
-                    
-                    
-                    
-                }
-                
-               
-                
-                HStack {
-                    TabView(selection: $currentStep) {
-                        ForEach(steps.indices, id: \.self) { index in
-                            let item = steps[index]
-                            let checked = Binding(
-                                get: { checkedStates[index] },
-                                set: { checkedStates[index] = $0 }
-                            )
-                            
-                            HStack(alignment: .center) {
-                                ZStack(alignment: .center) {
-                                    Rectangle()
-                                        .foregroundColor(checked.wrappedValue ? Color(uiColor: .white).opacity(0): Color(uiColor: .white))
-                                        .frame(width: 207, height: 526)
-                                        .cornerRadius(16)
-                                        .padding(.leading, 8)
-                                        .padding(.trailing, 8)
-                                        .alignmentGuide(.leading) { dimensions in
-                                            -dimensions.width / 2
-                                        }
-                                        .border(checked.wrappedValue ? Color("Purple") : Color(uiColor: .white).opacity(0)) // como eu coloco a borda arredondada nisso?
-                                    
-                                    
-//                                        .cornerRadius(checked.wrappedValue ? 15 : 16)
-                                    
-                                    VStack(alignment: .center) {
-                                        Text(item)
-                                            .font(.title)
-                                            .bold()
-                                            .foregroundColor(Color("Dark Purple"))
-//                                            .multilineTextAlignment(.leading)
-                                            .frame(width: 207, height: 400)
-//                                            .frame(maxWidth: 240)
 
-                                        Button {
-                                            withAnimation {
-                                                checked.wrappedValue.toggle()
-                                                currentStep += 1
-                                                if currentStep >= 3 {
-                                                    currentStep = 0
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    HStack {
+                        TabView(selection: $currentStep) {
+                            ForEach(steps.indices, id: \.self) { index in
+                                let item = steps[index]
+                                let checked = Binding(
+                                    get: { checkedStates[index] },
+                                    set: { checkedStates[index] = $0 }
+                                )
+                                
+                                HStack(alignment: .center) {
+                                    ZStack(alignment: .center) {
+                                        Rectangle()
+                                            .foregroundColor(checked.wrappedValue ? Color(uiColor: .white).opacity(0): Color(uiColor: .white))
+                                            .frame(width: 207, height: 526)
+                                            .cornerRadius(16)
+                                            .padding(.leading, 8)
+                                            .padding(.trailing, 8)
+                                            .alignmentGuide(.leading) { dimensions in
+                                                -dimensions.width / 2
+                                            }
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 16)
+                                                    .inset(by: 1)
+                                                    .stroke(checked.wrappedValue ? Color("Light Purple") : .clear, lineWidth: 1))
+                                        
+                                        
+                                        
+                                        //                                        .cornerRadius(checked.wrappedValue ? 15 : 16)
+                                        
+                                        VStack(alignment: .center) {
+                                            Text(item)
+                                                .font(.title)
+                                                .bold()
+                                                .foregroundColor(Color("Dark Purple"))
+                                            //                                            .multilineTextAlignment(.leading)
+                                                .frame(width: 180, height: 400)
+                                            //                                            .frame(maxWidth: 240)
+                                            
+                                            Button {
+                                                withAnimation {
+                                                    checked.wrappedValue.toggle()
+                                                    currentStep += 1
+                                                    if currentStep >= steps.count {
+                                                        currentStep = 0
+                                                    }
+                                                    
                                                 }
+                                            } label: {
+                                                Image(systemName: checked.wrappedValue ? "checkmark.circle.fill" : "circle")
+                                                    .resizable()
+                                                    .font(.title)
+                                                    .frame(width: 36, height: 36)
+                                                
+                                                    .padding(4)
+                                                    .foregroundColor(Color("Purple"))
                                                 
                                             }
-                                        } label: {
-                                            Image(systemName: checked.wrappedValue ? "checkmark.circle.fill" : "circle")
-                                                .resizable()
-                                                .font(.title)
-                                                .frame(width: 36, height: 36)
-                                                
-                                                .padding(4)
-                                                .foregroundColor(Color("Purple"))
-                                                
                                         }
                                     }
+                                    .padding(.horizontal, 16)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .background(Color.clear)
                                 }
-                                .padding(.horizontal, 16)
-                                .frame(maxWidth: .infinity, alignment: .center)
-                                .background(Color.clear)
+                                .ignoresSafeArea()
+                                .tag(index)
                             }
-                            .ignoresSafeArea()
-                            .tag(index)
                         }
-                    }
-                    .tabViewStyle(.page(indexDisplayMode: .automatic))
-                    .padding(.leading, 72.0)
-                    
-                    VStack(spacing: 4) {
-                        Spacer()
-                        NavigationLink{
-                            InventoryView(title: title, steps: steps, descs: descs)
-                        } label: {
-                        HStack{
-                                Image(systemName: "sparkles.tv.fill")
-                                    .font(.title3)
-                                    .frame(width: 49, height: 45)
-                                    .background(Color("Dark Purple"))
-                                    .cornerRadius(22)
+                        .tabViewStyle(.page(indexDisplayMode: .automatic))
+                        .padding(.leading, 72.0)
+                        
+                        VStack(spacing: 4) {
+                            Spacer()
+                            NavigationLink{
+                                InventoryView(title: title, steps: steps, descs: descs)
+                            } label: {
+                                HStack{
+                                    Image(systemName: "sparkles.tv.fill")
+                                        .font(.title3)
+                                        .frame(width: 49, height: 45)
+                                        .background(Color("Dark Purple"))
+                                        .cornerRadius(22)
                                     
-                            }.disabled(true)
-                                .opacity(0)
+                                }.disabled(true)
+                                    .opacity(0)
+                            }
+                            Rectangle()
+                                .opacity(0.0)
+                                .frame(width: 0.1, height: 34)
                         }
-                        Rectangle()
-                            .opacity(0.0)
-                            .frame(width: 0.1, height: 34)
                     }
+                    .padding(.trailing, 20.0)
                 }
-                .padding(.trailing, 20.0)
             }
             .background(
                   RadialGradient(gradient: Gradient(colors: [Color(red: 0.6, green: 0.72, blue: 0.85), Color(red: 0.73, green: 0.64, blue: 0.85), Color(red: 0.78, green: 0.7, blue: 0.77), Color(red: 0.85, green: 0.78, blue: 0.68)]), center: .topTrailing, startRadius: 0, endRadius: 1200)
