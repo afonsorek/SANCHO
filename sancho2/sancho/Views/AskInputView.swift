@@ -45,8 +45,8 @@ struct AskInputView: View {
                     
                     VStack(spacing: 0){
                         TextField("Ex.: Quero limpar minha casa", text: $prompt)
+                            .foregroundColor(Color("White"))
                             .frame(width: 361, height: 36, alignment: .center)
-                            .foregroundColor(Color(uiColor: .darkGray))
                             .padding(.horizontal, 40)
                             .textFieldStyle(.roundedBorder)
                             .cornerRadius(1000)
@@ -163,12 +163,12 @@ struct AskInputView: View {
                 arrayDesc = [""]
                 print("Descrição veio vazia")
             } else if itemDesc.count == 2{
-                arrayDesc = itemDesc[1].components(separatedBy: ", ")
+                arrayDesc = itemDesc[1].components(separatedBy: ". ")
                 print("Descrição veio certa teoricamente")
             }else {
                 for i in 1 ..< itemDesc.count{
-                    textFinal[0] += "\(itemDesc[i]), "
-                    arrayDesc = textFinal[0].components(separatedBy: ", ")
+                    textFinal[0] += "\(itemDesc[i])"
+                    arrayDesc = textFinal[0].components(separatedBy: ".")
                     
                     print("Descrição tentou concatenar com textFinal: \(textFinal)")
                 }

@@ -85,6 +85,9 @@ struct ResultsFocusView: View {
                                         }
                                         .border(checked.wrappedValue ? Color("Purple") : Color(uiColor: .white).opacity(0)) // como eu coloco a borda arredondada nisso?
                                     
+//                                    RoundedRectangle(cornerRadius: 4)
+//                                    .inset(by: 0.5)
+//                                    .stroke(isSelected ? .clear : Color("Light Purple"), lineWidth: 1))
                                     
 //                                        .cornerRadius(checked.wrappedValue ? 15 : 16)
                                     
